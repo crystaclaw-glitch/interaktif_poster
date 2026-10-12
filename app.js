@@ -22,13 +22,13 @@ let u = 0.5; // px per unit
 const CARDS = [
   { key: 'home' },
   { key: 'gurita', name: 'Gurita', need: ['heart', 'octo'],
-    start: 'Colek jantung dan guritanya!', done: 'Hebat! Gurita punya 3 jantung!' },
+    start: 'Klik jantung dan guritanya!', done: 'Hebat! Gurita punya 3 jantung!' },
   { key: 'kuda', name: 'Kuda', need: ['horse', 'wind'],
-    start: 'Colek kuda dan kincir anginnya!', done: 'Hebat! Kuda bisa tidur sambil berdiri!' },
+    start: 'Klik kuda dan kincir anginnya!', done: 'Hebat! Kuda bisa tidur sambil berdiri!' },
   { key: 'gajah', name: 'Gajah', need: ['jump', 'run'],
-    start: 'Colek gajahnya, suruh dia lompat!', done: 'Gajah tidak bisa lompat, tapi larinya kencang!' },
+    start: 'Klik gajahnya, suruh dia lompat!', done: 'Gajah tidak bisa lompat, tapi larinya kencang!' },
   { key: 'air', name: 'Air', need: ['ice', 'air', 'steam'],
-    start: 'Colek keran, salju, dan kolamnya!', done: 'Titik tripel: es, air, dan uap sekaligus!' },
+    start: 'Klik keran, salju, dan kolamnya!', done: 'Titik tripel: es, air, dan uap sekaligus!' },
   { key: 'finish' }
 ];
 const S = {
@@ -330,7 +330,7 @@ function checkProgress(ctx) {
     }
     if (ctx.key !== 'gajah') setHint(def.done);
   } else if (ctx.key !== 'gajah') {
-    setHint(`Bagus! Masih ada yang bisa dicolek (${n}/${def.need.length}).`);
+    setHint(`Bagus! Masih ada yang bisa ditekan (${n}/${def.need.length}).`);
   }
   renderDots();
 }
@@ -450,7 +450,7 @@ function buildHome() {
   const d = tapdot(card, spots[0][0], spots[0][1]);
   let k = 0;
   v.every(() => { k = (k + 1) % spots.length; d.style.left = X(spots[k][0]); d.style.top = Y(spots[k][1]); }, 3800);
-  return { el: card, v, hint: 'Colek gambar-gambarnya!' };
+  return { el: card, v, hint: 'Tekan gambar-gambarnya!' };
 }
 
 /* ------------------------------------------------------------------ */
@@ -766,7 +766,7 @@ function buildFinish() {
     s.style.animationDelay = (0.4 + i * 0.25) + 's';
     s.innerHTML = `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="${STAR_PATH}"/></svg>`;
   });
-  mk('p', '', el).textContent = total === 4 ? 'Empat bintang! Masih ada banyak fakta seru lainnya di Tiny Talk Notes.' : 'Colek lagi kartunya untuk dapat semua bintang!';
+  mk('p', '', el).textContent = total === 4 ? 'Empat bintang! Masih ada banyak fakta seru lainnya di Tiny Talk Notes.' : 'Klik lagi kartunya untuk dapat semua bintang!';
   v.later(rain, 200);
   return { el, v, hint: 'Ketuk kartu untuk membacanya lagi.' };
 }
